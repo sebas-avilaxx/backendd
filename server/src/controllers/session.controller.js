@@ -19,7 +19,8 @@ export const loginControllers = async (req, res) => {
     req.session.user = {
         name: `${user.first_name} ${user.last_name}`,
         email: user.email,
-        age: user.age
+        age: user.age,
+        admin: user.role === 'admin'
     }
     res.send({ status: "success", payload: req.session.user, message: "logueo realizado" });
 };
