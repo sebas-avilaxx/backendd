@@ -1,7 +1,10 @@
 import ProductManager from "../dao/mongo/product.service.js";
 import { getIO } from "../app.js";
+<<<<<<< HEAD
 import CustomError from "../services/errors/CustomErrors.js";
 import { noFindProductErrorInfo } from "../services/errors/errors.messages.js";
+=======
+>>>>>>> 74f1aec62117996c0eb593c39de349df07d68c1d
 
 const manager = new ProductManager();
 
@@ -66,6 +69,7 @@ export const addProductControllers = async (req, res) => {
 };
 
 export const getProductByIdControllers = async (req, res) => {
+<<<<<<< HEAD
     try {
         const { pid } = req.params;
         const product = await manager.getProductById(pid);
@@ -84,6 +88,15 @@ export const getProductByIdControllers = async (req, res) => {
         res.status(404).json({error: error.code, message: error.message});
     }
 
+=======
+    const { pid } = req.params;
+    const product = await manager.getProductById(pid);
+    if(product) {
+        res.send({status: "success", payload: product });
+    } else {
+        res.status(404).json({'error': 'Producto no encontrado'});
+    }
+>>>>>>> 74f1aec62117996c0eb593c39de349df07d68c1d
 };
 
 export const updateProductByIdControllers = async (req, res) => {

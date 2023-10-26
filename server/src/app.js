@@ -9,7 +9,10 @@ import passport from 'passport';
 import initializePassport from './config/passport.config.js';
 import envConfig from "./config/env.config.js";
 import MongoSingleton from "./config/mongodb-singleton.js";
+<<<<<<< HEAD
 import compression from "express-compression";
+=======
+>>>>>>> 74f1aec62117996c0eb593c39de349df07d68c1d
 
 const app = express();
 const server = http.createServer(app);
@@ -46,8 +49,11 @@ initializePassport();
 app.use(passport.initialize())
 app.use(passport.session())
 
+<<<<<<< HEAD
 app.use(compression());
 
+=======
+>>>>>>> 74f1aec62117996c0eb593c39de349df07d68c1d
 app.use('/', router);
 
 io.on('connection', socket => {
