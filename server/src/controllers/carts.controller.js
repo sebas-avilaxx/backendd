@@ -1,16 +1,12 @@
 import CartManager from "../dao/mongo/cart.service.js";
-<<<<<<< HEAD
 import CustomError from "../services/errors/CustomErrors.js";
 import { noFindCartErrorInfo } from "../services/errors/errors.messages.js";
 import { EErrors } from "../services/errors/errorsEnum.js";
-=======
->>>>>>> 74f1aec62117996c0eb593c39de349df07d68c1d
 import { generateUniqueTicketCode } from "../utils/generateCode.js";
 
 const manager = new CartManager();
 
 export const getCartControllers = async (req, res) => {
-<<<<<<< HEAD
     try {
         const { cid } = req.params;
         const cartProducts = await manager.getProductsOfCartById(cid);
@@ -25,20 +21,11 @@ export const getCartControllers = async (req, res) => {
             })
           }
     } catch (error) {
-        console.error(error);
+        req.logger.error(error);
         res.status(404).json({error: error.code, message: error.message});
     }
    
 
-=======
-    const { cid } = req.params;
-    const cartProducts = await manager.getProductsOfCartById(cid);
-    if(cartProducts) {
-      res.send({status: "success", payload: cartProducts });
-    }else {
-      res.status(404).json({'error': 'Carrito no encontrado'});
-    }
->>>>>>> 74f1aec62117996c0eb593c39de349df07d68c1d
 };
 
 export const createCartControllers = async (req, res) => {
@@ -154,7 +141,7 @@ export const purchaseCartControllers = async (req, res) => {
             productsNotPurchased: productsNotPurchased,
         });
     } catch (error) {
-        console.error(error);
+        req.logger.error(error);
         return res.status(500).json({ error: "Ocurrió un error en el servidor" });
     }
 };
