@@ -5,9 +5,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "start": "nodemon src/app.js --mode dev",
     "start:production": "nodemon src/app.js --mode production"
+  },
+  "mocha": {
+    "spec": "test/**/*.test.js",
+    "require": "test/setup.js"
   },
   "keywords": [],
   "author": "",
@@ -36,6 +40,9 @@
     "winston": "^3.11.0"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1"
+    "chai": "^4.3.10",
+    "mocha": "^10.2.0",
+    "nodemon": "^3.0.1",
+    "supertest": "^6.3.3"
   }
 }
